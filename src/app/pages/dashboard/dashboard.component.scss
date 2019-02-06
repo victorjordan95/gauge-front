@@ -1,0 +1,15 @@
+thead {
+  >tr {
+    >th {
+      cursor: pointer;
+
+      .material-icons {
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.w-60 {
+  width: 60%;
+}
