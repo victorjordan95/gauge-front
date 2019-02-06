@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
 
     public interactions;
     public brands;
+    public filter;
 
     // Pie Chart settings
     view: any[] = [400, 300];
@@ -36,7 +37,7 @@ export class DashboardComponent implements OnInit {
         this.interactions = i.interactions;
         const b = new Brands;
         this.brands = b.brands;
-        
+
         const u = new Users;
         this.interactions.forEach((element: any) => {
             u.users.forEach((el: any) => {
@@ -45,8 +46,6 @@ export class DashboardComponent implements OnInit {
                 }
             });
         });
-        console.log(this.interactions);
-
         this.selectedBrand = this.brands[0].name;
 
         this.getInfluencersUsers();
