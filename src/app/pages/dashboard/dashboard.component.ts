@@ -13,16 +13,11 @@ export class DashboardComponent implements OnInit {
     public interactions;
     public brands;
     public filter;
-
-    // Pie Chart settings
-    view: any[] = [400, 300];
+    public selectedBrand;
 
     public influencersUsers = [];
     public topFiveUsers = [];
     public influencersUsersByBrand = [];
-
-    public selectedBrand;
-    public hasData = false;
 
 
     // Table variables
@@ -52,11 +47,21 @@ export class DashboardComponent implements OnInit {
         this.getBrandsById();
     }
 
-    sort(key) {
+    /**
+     * Sort method to order the
+     * content of the HTML table.
+     * @param key the clicked header value of the table.
+     */
+    sort(key): void {
         this.key = key;
         this.reverse = !this.reverse;
     }
 
+    /**
+     * TODO: When click, the page could show info about the clicked info
+     * Show the clicked label info.
+     * @param event Clicked label in chart
+     */
     onSelect(event) {
         console.log(event);
     }
@@ -92,6 +97,14 @@ export class DashboardComponent implements OnInit {
         }
     }
 
+    /**
+      * Get the brands by specific ID.
+      * The function will return a new
+      * object with only the users with
+      * the same brand ID and sort
+      * by decreasing value.
+      * @param id Id of the brand, 1 is the default value
+      */
     private getBrandsById(id = 1) {
         this.influencersUsersByBrand = [];
 
@@ -116,6 +129,11 @@ export class DashboardComponent implements OnInit {
         this.influencersUsersByBrand.sort((a, b) => b.value - a.value);
     }
 
+    /**
+     * Method fired when the user change
+     * the brand in combobox of the bar chart.
+     * @param e The selected value in combobox
+     */
     public onChange(e) {
         this.getBrandsById(e);
     }
